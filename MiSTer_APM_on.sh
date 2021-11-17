@@ -65,17 +65,17 @@ function apmBanner(){
 function apmHelp()
 {
 	apmBanner
-	echo -e " start\t-\t Start immediately"
-	echo -e " skip\t-\t Skip to the next play"
-	echo -e " stop\t-\t Stop immediately"
+	echo -e " start - Start immediately"
+	echo -e " skip - Skip to the next play"
+	echo -e " stop - Stop immediately"
 	echo -e ""
-	echo -e " update\t-\t Self-Update"
-	echo -e " monitor\t-\t Monitor APM output"
+	echo -e " update - Self-Update"
+	echo -e " monitor - Monitor APM output"
 	echo -e ""
-	echo -e " enable\t-\t Enable autoplay"
-	echo -e " disable\t-\t Disable autoplay"
+	echo -e " enable -  Enable autoplay"
+	echo -e " disable - Disable autoplay"
 	echo -e ""
-	echo -e "menu\t-\t Load menu"
+	echo -e "menu - Load menu"
 	echo -e ""
 	exit 2
 }
@@ -185,6 +185,9 @@ function apmAutoPlayMenu() {
 
 #======== APM Parse Command's MENU ========
 function apmCommand(){
+	
+	echo ${@}
+	echo ${#}
 	
 	if [ ${#} -gt 2 ]; then # Validando se temos mais de 2 parametros
 		apmHelp
