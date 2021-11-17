@@ -4,7 +4,7 @@
 # Change these in the INI file
 
 #======== GLOBAL VARIABLES =========
-declare -g mrapmpath="/media/fat/Scripts/.MiSTer_APM"
+declare -g mrapmpath="/media/fat/Scripts/.MiSTer_Player"
 declare -g misterpath="/media/fat"
 
 #======== DEBUG VARIABLES ========
