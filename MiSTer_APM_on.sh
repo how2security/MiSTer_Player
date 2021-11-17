@@ -4,8 +4,8 @@
 export PATH=/bin:/sbin:/usr/bin:/usr/sbin:/media/fat/linux:/media/fat/Scripts:/media/fat/Scripts/.MiSTer_Player:.
 
 declare -g misterpath="/media/fat"
-declare -g mrapmpath="${misterpath}/Scripts/.MiSTer_Player"
-declare -g musicpath="${misterpath}/Music"
+declare -g mrapmpath="/media/fat/Scripts/.MiSTer_Player"
+declare -g musicpath="/media/fat/Music"
 
 declare -g apmpid="${$}"
 declare -g apmprocess="$(basename -- ${0})"
