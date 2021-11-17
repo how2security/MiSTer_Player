@@ -425,7 +425,7 @@ function loopPlay() {
 	
 		counter=${gameTimer}
 		
-		nextPlay${1}
+		nextPlay ${1}
 		
 		while [ ${counter} -gt 0 ]; do
 			echo -e "$amarelo[*]$fim Next Validator in ${counter}...\033[OK\r"
