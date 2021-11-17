@@ -121,7 +121,7 @@ function apmPreMenu(){
 #======== APM MENU DIALOG ========
 
 function apmMenu() {
-	dialog --clean --no-cancel --ascii-lines --no-tags \
+	dialog --clear --no-cancel --ascii-lines --no-tags \
 	--backtitle "Audio Play Mode" --title "[ Main Menu ]" \
 	--menu "Use the arrow keys and enter \nor the d-pad and A button" 0 0 0 \
 	Start "Start APM now" \
