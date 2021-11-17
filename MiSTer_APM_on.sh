@@ -64,7 +64,7 @@ function apmBanner(){
 
 function apmHelp()
 {
-	banner
+	apmBanner
 	echo -e " start\t-\t Start immediately"
 	echo -e " skip\t-\t Skip to the next play"
 	echo -e " stop\t-\t Stop immediately"
@@ -134,7 +134,7 @@ function apmMenu() {
 	menuresponse=$(<"/tmp/.APMmenu")
 	clear
 
-	if [ "${apmquit,,}" == "no"]; then echo " menuresponse: ${menuresponse}"; fi
+	if [ "${apmquiet,,}" == "no" ]; then echo " menuresponse: ${menuresponse}"; fi
 	apmCommand ${menuresponse}
 }
 
