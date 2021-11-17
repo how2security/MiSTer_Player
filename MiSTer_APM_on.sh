@@ -115,7 +115,7 @@ function apmPreMenu(){
 			break
 		fi
 	done
-	apmCommands ${premenu}
+	apmCommand ${premenu}
 }
 
 #======== APM MENU DIALOG ========
