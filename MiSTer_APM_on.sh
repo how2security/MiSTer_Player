@@ -463,7 +463,7 @@ function loopPlay() {
 	done
 }
 
-function NextPlay(){
+function nextPlay(){
 	playlist=""
 	for i in $(ls ${musicpath}); do
 		playlist+=$i" ";
