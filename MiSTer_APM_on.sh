@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 
 #======== GLOBAL VARIABLES =========
 export PATH=/bin:/sbin:/usr/bin:/usr/sbin:/media/fat/linux:/media/fat/Scripts:/media/fat/Scripts/.MiSTer_Player:.
