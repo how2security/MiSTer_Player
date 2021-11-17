@@ -79,7 +79,7 @@ killall -q -9 MiSTer_APM_Joy.py
 killall -q -9 MiSTer_APM_Mouse.sh
 killall -q -9 MiSTer_APM_Keyboard.sh
 killall -q -9 xxd
-kill -9 $(ps | grep "inotifywait" | grep "APM_Joy_Change" | cut --fields=2 --only-delimited --delimiter=' ')
+kill -9 $(ps | grep "inotifywait" | grep "APM_Joy_Change" | cut --fields=1 --only-delimited --delimiter=' ')
 echo " Done!"
 
 # Convert seconds to minutes
