@@ -166,7 +166,7 @@ function apmConfigMenu() {
 		--backtitle "Audio Play Modo" --title "[ INI Settings ]" \
 		--msgbox "Change saved!" 0 0
 	fi
-	parse_cmd menu
+	apmCommand menu
 }
 
 function apmAutoPlayMenu() {
@@ -424,6 +424,8 @@ function loopPlay() {
 	while :; do
 	
 		counter=${gameTimer}
+		
+		echo "----- ${1}"
 		
 		nextPlay ${1}
 		
