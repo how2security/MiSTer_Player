@@ -63,6 +63,8 @@ function apm_jsmonitor() {
 
 #======== Start ========
 # Kill running process
+echo $(basename)
+echo $(basename -- ${0})
 pids=$(pidof -o $$ $(basename -- ${0}))
 if [ ! -z "pids" ]; then
 	echo -n " Removing other instances of $(basename -- ${0})..."
