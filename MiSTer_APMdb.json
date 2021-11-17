@@ -1,0 +1,19 @@
+{
+    "base_files_url": "",
+    "db_files": [],
+    "db_id": "MiSTer_APM_files",
+    "db_url": "https://raw.githubusercontent.com/how2security/MiSTer_Player/main/MiSTer_APMdb.json",
+    "default_options": {},
+    "files": {
+	"Scripts/update_MiSTer_APM.sh": {
+	    "hash": "",
+	    "size": 34941,
+	    "url": "https://raw.githubusercontent.com/how2security/MiSTer_Player/main/MiSTer_APM_on.sh"
+	}
+    },
+    "folders": {
+	"Scripts": {}
+    },
+    "timestamp": 1636408184,
+    "zips": {}
+}
