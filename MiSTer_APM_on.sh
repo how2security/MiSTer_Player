@@ -63,7 +63,7 @@ function apmHelp()
 	echo -e " MiSTer_APM_Update - Install and Update APM"
 	echo -e " MiSTer_APM_on.sh - Starting play music in /media/fat/Music folder"
 	echo -e " MiSTer_APM_off.sh - Stopping play music"
-	echo -e " MiSTer_APM_Unistall.sh - Unistall APM"
+	echo -e " MiSTer_APM_Uninstall.sh - Uninstall APM"
 	echo -e ""
 	echo -e "Another scripts futire use"
 	exit 2
