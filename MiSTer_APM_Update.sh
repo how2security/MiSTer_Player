@@ -62,44 +62,24 @@ function apmUpdate() { # apm_update (next command)
 	# Prep curl
 	curl_check
 
-	if [ ! "$(dirname -- ${0})" == "/tmp" ]; then
-		# Warn if using non-default branch for update
-		if [ ! "${branch}" == "main" ]; then
-			apmBanner
-		fi
+	# Download the newest MiSTer_APM_on.sh to /tmp
+	getAPMDownload MiSTer_APM_on.sh /tmp
+	cp --force "/tmp/MiSTer_APM_on.sh" "/media/fat/Scripts/MiSTer_APM_on.sh"
+	getAPMDownload .MiSTer_Player/MiSTer_APM_init
+	getAPMDownload .MiSTer_Player/MiSTer_APM_MCP
+	getAPMDownload .MiSTer_Player/MiSTer_APM_Joy.py 
+	getAPMDownload .MiSTer_Player/MiSTer_APM_Keyboard.sh 
+	getAPMDownload .MiSTer_Player/MiSTer_APM_Mouse.sh 
+	getAPMDownload MiSTer_APM_off.sh /media/fat/Scripts
+	getAPMDownload MiSTer_APM_Update.sh /media/fat/Scripts
+	getAPMDownload MiSTer_APM_Unistall.sh /media/fat/Scripts
 
-		# Download the newest MiSTer_APM_on.sh to /tmp
-		getAPMDownload MiSTer_APM_on.sh /tmp
-		if [ -f /tmp/MiSTer_APM_on.sh ]; then
-			if [ ${1} ]; then
-				echo -e "$azul[+]$fim Continuing setup with latest"
-				echo -e "$azul[+]$fim  MiSTer_APM_on.sh..."
-				/tmp/MiSTer_APM_on.sh ${1}
-				exit 0
-			fi
-		else
-			# /tmp/MiSTer_APM_on.sh isn't there!
-			echo -e "$vermelho[-]$fim APM update FAILED"
-			echo " No Internet?"
-			exit 1
-		fi
-	else # We're running from /tmp - download dependencies and procced
-		cp --force "/tmp/MiSTer_APM_on.sh" "/media/fat/Scripts/MiSTer_APM_on.sh"
-		getAPMDownload .MiSTer_Player/MiSTer_APM_init
-		getAPMDownload .MiSTer_Player/MiSTer_APM_MCP
-		getAPMDownload .MiSTer_Player/MiSTer_APM_Joy.py 
-		getAPMDownload .MiSTer_Player/MiSTer_APM_Keyboard.sh 
-		getAPMDownload .MiSTer_Player/MiSTer_APM_Mouse.sh 
-		getAPMDownload MiSTer_APM_off.sh /media/fat/Scripts
-		getAPMDownload MiSTer_APM_Update.sh /media/fat/Scripts
-		getAPMDownload MiSTer_APM_Unistall.sh /media/fat/Scripts
-
-		if [ -f /media/fat/Scripts/MiSTer_APM.ini ]; then
-			echo -e "$amarelo[!]$fim MiSTer APM INI Already exists... SKIPPED!"
-		else
-			getAPMDownload MiSTer_APM.ini /media/fat/Scripts
-		fi
+	if [ -f /media/fat/Scripts/MiSTer_APM.ini ]; then
+		echo -e "$amarelo[!]$fim MiSTer APM INI Already exists... SKIPPED!"
+	else
+		getAPMDownload MiSTer_APM.ini /media/fat/Scripts
 	fi
+	
 	echo -e "$azul[+]$fim Update complete!"
 	return
 }
@@ -173,7 +153,7 @@ function curl_download() {
 
 function main(){
 	apmBanner
-	apmUpdate update
+	apmUpdate
 	exit 0
 }
 main
