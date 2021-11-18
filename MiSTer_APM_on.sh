@@ -488,7 +488,7 @@ function loadPlay(){
 	echo -ne "$verde[+]$fim Starting now on the "
 	echo -e "$(date +%H:%M:%S) - ${1} - ${3}" >> /tmp/APM_PLAY.log
 	echo -ne " Loading music in ${i}...\033[OK\r"
-	$musicPlayer -q $musicpath/${nextplay}
+	$musicPlayer -q $musicpath/${nextplay} 2>&1 &
 	sleep 1
 
 	sleep 1
