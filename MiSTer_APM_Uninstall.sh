@@ -61,7 +61,7 @@ function apmUnistall() {
 	rm -rf /media/fat/Scripts/MiSTer_APM_on.sh &>/dev/null
 	rm -rf /media/fat/Scripts/MiSTer_APM_off.sh &>/dev/null
 	rm -rf /media/fat/Scripts/MiSTer_APM.ini &>/dev/null
-	rm -rf /media/fat/Scripts/MiSTer_APM_Unistall.sh &>/dev/null
+	rm -rf /media/fat/Scripts/MiSTer_APM_Uninstall.sh &>/dev/null
 	echo -e "$azul[+]$fim Unistall complete!"
 }
 
