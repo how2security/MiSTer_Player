@@ -63,7 +63,7 @@ function apmHelp()
 	echo -e " MiSTer_APM_Update - Install and Update APM"
 	echo -e " MiSTer_APM_on.sh - Starting play music in /media/fat/Music folder"
 	echo -e " MiSTer_APM_off.sh - Stopping play music"
-	echo -e " MiSTer_APM_Uninstall.sh - Uninstall APM"
+	echo -e " MiSTer_APM_Uninstall.sh - Uninnstall APM"
 	echo -e ""
 	echo -e "Another scripts futire use"
 	exit 2
@@ -85,7 +85,7 @@ function serialKiller(){
 	killall -9 mpg123 &>/dev/null
 	killall -9 MiSTer_APM.on.sh &>/dev/null
 	killall -9 MiSTer_APM.off.sh &>/dev/null
-	killall -9 MiSTer_APM.Update.sh &>/dev/null
+	killall -9 MiSTer_APM_Uninstall.sh &>/dev/null
 	
 	echo -e "$verde[+]$fim Done!"
 }
