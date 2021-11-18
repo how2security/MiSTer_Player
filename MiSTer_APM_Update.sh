@@ -14,6 +14,8 @@ verde="\e[32;1m"
 vermelho="\e[31;1m"
 fim="\e[m"
 
+branch="main"
+
 #======== APM DEFAULTS FUNCTIONS ========
 
 function apmBanner(){
