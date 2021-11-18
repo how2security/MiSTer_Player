@@ -48,7 +48,7 @@ function apmHelp()
 	echo -e " MiSTer_APM_Update.sh - Install and Update APM"
 	echo -e " MiSTer_APM_on.sh - Starting play music in /media/fat/Music folder"
 	echo -e " MiSTer_APM_off.sh - Stopping play music"
-	echo -e " MiSTer_APM_Unistall.sh - Stopping play music"
+	echo -e " MiSTer_APM_Uninstall.sh - Stopping play music"
 	echo -e ""
 	echo -e "Another scripts futire use"
 	exit 2
@@ -72,7 +72,7 @@ function apmUpdate() { # apm_update (next command)
 	getAPMDownload .MiSTer_Player/MiSTer_APM_Mouse.sh 
 	getAPMDownload MiSTer_APM_off.sh /media/fat/Scripts
 	getAPMDownload MiSTer_APM_Update.sh /media/fat/Scripts
-	getAPMDownload MiSTer_APM_Unistall.sh /media/fat/Scripts
+	getAPMDownload MiSTer_APM_Uninstall.sh /media/fat/Scripts
 
 	if [ -f /media/fat/Scripts/MiSTer_APM.ini ]; then
 		echo -e "$amarelo[!]$fim MiSTer APM INI Already exists... SKIPPED!"
