@@ -173,7 +173,7 @@ function curl_download() {
 
 function main(){
 	apmBanner
-	apmUpdate
+	apmUpdate update
 	exit 0
 }
 main
