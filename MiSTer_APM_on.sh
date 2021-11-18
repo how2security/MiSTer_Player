@@ -10,6 +10,9 @@ declare -g musicpath="/media/fat/Music"
 declare -g apmpid="${$}"
 declare -g apmprocess="$(basename -- ${0})"
 
+declare -g playlist=""
+declare -g nextplay=""
+
 ### CORES
 amarelo="\e[33;1m"
 azul="\e[34;1m"
@@ -35,6 +38,8 @@ volPlay=70
 if [ -f "${misterpath}/Scripts/MiSTer_APM.ini" ]; then
 	source "${misterpath}/Scripts/MiSTer_APM.ini"
 fi
+#========= MATRIZ PLAYLIST =========
+
 
 #======== APM DEFAULTS FUNCTIONS ========
 
@@ -188,6 +193,7 @@ function apmCommand(){
 	
 	echo ${@}
 	echo ${#}
+	echo ${1,,}
 	
 	if [ ${#} -gt 2 ]; then # Validando se temos mais de 2 parametros
 		apmHelp
@@ -403,7 +409,8 @@ function apmStart() { # apm_start (play)
 	fi
 
 	# Start APM looping through play
-	loopPlay ${1}
+	playList
+	loopPlay
 }
 
 function serialKiller(){
@@ -411,23 +418,35 @@ function serialKiller(){
 	# This can happen if the script is started multiple times
 	echo -ne "$azul[-]$fim Stopping other running instances of ${apmprocess}..."
 	kill -9 $(pidof -o ${apmpid} ${apmprocess}) &>/dev/null
+	kill -9 mpg123 &>/dev/null
 	wait $(pidof -o ${apmpid} ${apmprocess}) &>/dev/null
 	echo -e "$verde[+]$fim Done!"
 }
 
-function loopPlay() {
+function playList() {
 	echo -e "$amarelo[*]$fim Let stating PLAY!"
 
-	# Reset log for this session
-	echo "" |> /tmp/APM_PLAY.log
+	for i in $(ls /media/fat/Music); do
+		playlist+=$i" ";
+	done
 	
+	if [ -z playlist ]; then
+		echo -e "$vermelho[-]$fim ERROR: FATAL - List of play music is empty. Nothing to do!"
+		exit 1
+	fi
+}
+
+function nextPlay(){
+	nextplay="$(echo ${playlist} | xargs shuf --head-count=1 --random-source=/dev/urandom --echo)"
+}
+
+function loopPlay(){
+
 	while :; do
 	
 		counter=${gameTimer}
 		
-		echo "----- ${1}"
-		
-		nextPlay ${1}
+		nextPlay
 		
 		while [ ${counter} -gt 0 ]; do
 			echo -e "$amarelo[*]$fim Next Validator in ${counter}...\033[OK\r"
@@ -465,40 +484,12 @@ function loopPlay() {
 	done
 }
 
-function nextPlay(){
-	playlist=""
-	for i in $(ls ${musicpath}); do
-		playlist+=$i" ";
-	done
-		if [ -z "${playlist[@]//[[:blank:]]/}" ]; then
-		echo -e "$vermelho[-]$fim ERROR: FATAL - List of play music is empty. Nothing to do!"
-		exit 1
-	fi
-
-	if [ -z "${1}" ]; then
-		nextplay="$(echo ${playlist} | xargs shuf --head-count=1 --random-source=/dev/urandom --echo)"
-	elif [ "${1,,}" == "countdown" ] && [ "$2" ]; then
-		countdown="countdown"
-		nextplay="${2}"
-	elif [ "${2,,}" == "countdown" ]; then
-		nextplay="${1}"
-		countdown="countdown"
-	fi
-		
-	loadPlay ${nextplay}
-}
-
 function loadPlay(){
 	echo -ne "$verde[+]$fim Starting now on the "
 	echo -e "$(date +%H:%M:%S) - ${1} - ${3}" >> /tmp/APM_PLAY.log
-	
-	if [ "${4}" == "countdown" ]; then
-		for i in {5..1}; do
-			echo -ne " Loading music in ${i}...\033[OK\r"
-			$musicPlayer -Z -q -g $volPlay $musicpath/${1}
-			sleep 1
-		done
-	fi
+	echo -ne " Loading music in ${i}...\033[OK\r"
+	$musicPlayer -q $musicpath/${nextplay}
+	sleep 1
 
 	sleep 1
 	echo "" |>/tmp/APM_Joystick_Activity
