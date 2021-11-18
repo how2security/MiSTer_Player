@@ -409,7 +409,6 @@ function apmStart() { # apm_start (play)
 	fi
 
 	# Start APM looping through play
-	playList
 	loopPlay
 }
 
@@ -673,6 +672,7 @@ function apmMonitor() {
 
 function main(){
 	apmBanner
+	playList
 	apmCommand ${@}
 	preExit
 	exit 0
